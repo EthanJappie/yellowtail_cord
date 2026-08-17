@@ -8,3 +8,8 @@ Yellowtail.Cord.IntegrationTests/obj/
 Yellowtail.Cord.UnitTests/obj/
 Yellowtail.Cord/bin/
 .vs/
+Yellowtail.Cord.Application/bin/
+Yellowtail.Cord.Domain/bin/
+Yellowtail.Cord.Infrastructure/bin/
+Yellowtail.Cord.IntegrationTests/bin/
+Yellowtail.Cord.UnitTests/bin/
