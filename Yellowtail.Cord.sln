@@ -1,9 +1,19 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.37027.9 d17.14
+VisualStudioVersion = 17.14.37027.9
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yellowtail.Cord", "Yellowtail.Cord\Yellowtail.Cord.csproj", "{336B6268-A574-456F-A74F-C70CA06C2E27}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yellowtail.Cord.Application", "Yellowtail.Cord.Application\Yellowtail.Cord.Application.csproj", "{14660099-271D-E9A3-7EAD-8B4F3C6F21D2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yellowtail.Cord.Domain", "Yellowtail.Cord.Domain\Yellowtail.Cord.Domain.csproj", "{ED1DAD18-8231-EC92-1DF3-625788FE536C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yellowtail.Cord.Infrastructure", "Yellowtail.Cord.Infrastructure\Yellowtail.Cord.Infrastructure.csproj", "{17EEB23E-6CF3-5F73-F971-2E330DE0BFB7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yellowtail.Cord.IntegrationTests", "Yellowtail.Cord.IntegrationTests\Yellowtail.Cord.IntegrationTests.csproj", "{67291277-A66D-1486-6BFD-7F40B1BC8984}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yellowtail.Cord.UnitTests", "Yellowtail.Cord.UnitTests\Yellowtail.Cord.UnitTests.csproj", "{8CB5D51F-02E3-5D3C-23A6-804E9DD405BA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +25,26 @@ Global
 		{336B6268-A574-456F-A74F-C70CA06C2E27}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{336B6268-A574-456F-A74F-C70CA06C2E27}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{336B6268-A574-456F-A74F-C70CA06C2E27}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14660099-271D-E9A3-7EAD-8B4F3C6F21D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14660099-271D-E9A3-7EAD-8B4F3C6F21D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14660099-271D-E9A3-7EAD-8B4F3C6F21D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14660099-271D-E9A3-7EAD-8B4F3C6F21D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED1DAD18-8231-EC92-1DF3-625788FE536C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED1DAD18-8231-EC92-1DF3-625788FE536C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED1DAD18-8231-EC92-1DF3-625788FE536C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED1DAD18-8231-EC92-1DF3-625788FE536C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{17EEB23E-6CF3-5F73-F971-2E330DE0BFB7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17EEB23E-6CF3-5F73-F971-2E330DE0BFB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17EEB23E-6CF3-5F73-F971-2E330DE0BFB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17EEB23E-6CF3-5F73-F971-2E330DE0BFB7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67291277-A66D-1486-6BFD-7F40B1BC8984}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67291277-A66D-1486-6BFD-7F40B1BC8984}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67291277-A66D-1486-6BFD-7F40B1BC8984}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67291277-A66D-1486-6BFD-7F40B1BC8984}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8CB5D51F-02E3-5D3C-23A6-804E9DD405BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8CB5D51F-02E3-5D3C-23A6-804E9DD405BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8CB5D51F-02E3-5D3C-23A6-804E9DD405BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8CB5D51F-02E3-5D3C-23A6-804E9DD405BA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

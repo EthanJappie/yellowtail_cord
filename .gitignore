@@ -1,2 +1,10 @@
 Yellowtail.Cord/obj/
 Yellowtail.Cord/appsettings.Development.json
+Yellowtail.Cord.Application/obj/project.assets.json
+Yellowtail.Cord.Application/obj/
+Yellowtail.Cord.Domain/obj/
+Yellowtail.Cord.Infrastructure/obj/
+Yellowtail.Cord.IntegrationTests/obj/
+Yellowtail.Cord.UnitTests/obj/
+Yellowtail.Cord/bin/
+.vs/
