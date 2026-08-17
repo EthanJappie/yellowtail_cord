@@ -1,4 +1,4 @@
-namespace yellowtail.Cord
+namespace Yellowtail.Cord
 {
     public class WeatherForecast
     {

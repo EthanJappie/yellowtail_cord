@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.14.37027.9 d17.14
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "yellowtail.Cord", "yellowtail.Cord.csproj", "{5C192C33-4ACF-47E3-B715-A582200C3E2C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yellowtail.Cord", "Yellowtail.Cord\Yellowtail.Cord.csproj", "{336B6268-A574-456F-A74F-C70CA06C2E27}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{5C192C33-4ACF-47E3-B715-A582200C3E2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5C192C33-4ACF-47E3-B715-A582200C3E2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5C192C33-4ACF-47E3-B715-A582200C3E2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5C192C33-4ACF-47E3-B715-A582200C3E2C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{336B6268-A574-456F-A74F-C70CA06C2E27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{336B6268-A574-456F-A74F-C70CA06C2E27}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{336B6268-A574-456F-A74F-C70CA06C2E27}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{336B6268-A574-456F-A74F-C70CA06C2E27}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {52BF4E54-1A98-43A3-A165-E4975C765742}
+		SolutionGuid = {25162E04-C316-4BB1-984F-8E475795AB4A}
 	EndGlobalSection
 EndGlobal

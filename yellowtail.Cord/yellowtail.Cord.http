@@ -1,6 +1,6 @@
-@yellowtail.Cord_HostAddress = http://localhost:5090
+@Yellowtail.Cord_HostAddress = http://localhost:5244
 
-GET {{yellowtail.Cord_HostAddress}}/weatherforecast/
+GET {{Yellowtail.Cord_HostAddress}}/weatherforecast/
 Accept: application/json
 
 ###

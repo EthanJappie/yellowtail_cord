@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace yellowtail.Cord.Controllers
+namespace Yellowtail.Cord.Controllers
 {
     [ApiController]
     [Route("[controller]")]
