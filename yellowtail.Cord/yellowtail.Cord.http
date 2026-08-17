@@ -1,0 +1,6 @@
+@yellowtail.Cord_HostAddress = http://localhost:5090
+
+GET {{yellowtail.Cord_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
