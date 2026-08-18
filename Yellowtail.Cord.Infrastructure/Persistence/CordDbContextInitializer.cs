@@ -19,13 +19,13 @@ public class CordDbContextInitializer
     {
         try
         {
-            _logger.LogInformation("Ensuring SQLite database is created and up to date...");
-            await _context.Database.EnsureCreatedAsync(cancellationToken);
-            _logger.LogInformation("SQLite database initialization completed successfully.");
+            _logger.LogInformation("Applying SQLite database migrations...");
+            await _context.Database.MigrateAsync(cancellationToken);
+            _logger.LogInformation("SQLite database migrations applied successfully.");
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "An error occurred while initializing the SQLite database.");
+            _logger.LogError(ex, "An error occurred while applying SQLite database migrations.");
             throw;
         }
     }
