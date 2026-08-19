@@ -7,11 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Yellowtail.Cord.Application\Yellowtail.Cord.Application.csproj" />
-    <ProjectReference Include="..\Yellowtail.Cord.Domain\Yellowtail.Cord.Domain.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="10.0.11" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.11">
       <PrivateAssets>all</PrivateAssets>
@@ -20,6 +15,11 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="10.0.11" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="10.0.11" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="10.0.11" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Yellowtail.Cord.Application\Yellowtail.Cord.Application.csproj" />
+    <ProjectReference Include="..\Yellowtail.Cord.Domain\Yellowtail.Cord.Domain.csproj" />
   </ItemGroup>
 
 </Project>
