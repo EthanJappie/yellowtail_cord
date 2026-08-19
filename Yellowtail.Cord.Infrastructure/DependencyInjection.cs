@@ -2,8 +2,10 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Yellowtail.Cord.Application.Common.Interfaces;
+using Yellowtail.Cord.Application.Common.Interfaces.Repositories;
 using Yellowtail.Cord.Infrastructure.Persistence;
 using Yellowtail.Cord.Infrastructure.Persistence.Interceptors;
+using Yellowtail.Cord.Infrastructure.Persistence.Repositories;
 using Yellowtail.Cord.Infrastructure.Services;
 
 namespace Yellowtail.Cord.Infrastructure;
@@ -27,6 +29,10 @@ public static class DependencyInjection
 
         services.AddScoped<ITenantProvider, TenantProvider>();
         services.AddScoped<CordDbContextInitializer>();
+
+        services.AddScoped<ITenantRepository, TenantRepository>();
+        services.AddScoped<IMemberRepository, MemberRepository>();
+        services.AddScoped<ISportRepository, SportRepository>();
 
         return services;
     }
