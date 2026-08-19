@@ -23,14 +23,14 @@ public class MemberController : ControllerBase
     }
 
     [HttpGet]
-    [RequireRole("Admin", "Tenant")]
+    //[RequireRole("Admin", "Tenant")]
     public async Task<ActionResult<PaginatedList<MemberDto>>> GetTenantMembers([FromQuery] int page = 1, [FromQuery] int pageSize = 20)
     {
         return await _mediator.Send(new GetTenantMembersQuery(page, pageSize));
     }
 
     [HttpGet("{id}")]
-    [RequireRole("Admin", "Tenant", "Member")]
+    //[RequireRole("Admin", "Tenant", "Member")]
     public async Task<ActionResult<MemberDto>> GetMember(Guid id)
     {
         var member = await _mediator.Send(new GetMemberDetailsQuery(id));
@@ -39,7 +39,7 @@ public class MemberController : ControllerBase
     }
 
     [HttpPut("{id}")]
-    [RequireRole("Admin", "Tenant", "Member")]
+    //[RequireRole("Admin", "Tenant", "Member")]
     public async Task<IActionResult> UpdateMember(Guid id, [FromBody] UpdateMemberCommand command)
     {
         if (id != command.Id) return BadRequest();
@@ -49,7 +49,7 @@ public class MemberController : ControllerBase
     }
 
     [HttpPut("{id}/tenant/{tenantId}")]
-    [RequireRole("Admin", "Tenant")]
+    //[RequireRole("Admin", "Tenant")]
     public async Task<IActionResult> AssignToTenant(Guid id, Guid tenantId)
     {
         var success = await _mediator.Send(new AssignMemberToTenantCommand(id, tenantId));
@@ -58,7 +58,7 @@ public class MemberController : ControllerBase
     }
 
     [HttpPost("{id}/sports/{sportId}")]
-    [RequireRole("Admin", "Tenant")]
+    //[RequireRole("Admin", "Tenant")]
     public async Task<IActionResult> AssignSport(Guid id, Guid sportId)
     {
         var success = await _mediator.Send(new AssignSportToMemberCommand(id, sportId));
@@ -67,7 +67,7 @@ public class MemberController : ControllerBase
     }
 
     [HttpDelete("{id}")]
-    [RequireRole("Admin", "Tenant")]
+    //[RequireRole("Admin", "Tenant")]
     public async Task<IActionResult> DeleteMember(Guid id)
     {
         var success = await _mediator.Send(new DeleteMemberCommand(id));

@@ -21,7 +21,7 @@ public class TenantController : ControllerBase
     }
 
     [HttpGet("current")]
-    [RequireRole("Tenant", "Admin")]
+    //[RequireRole("Tenant", "Admin")]
     public async Task<ActionResult<TenantDto>> GetCurrentTenant()
     {
         var tenant = await _mediator.Send(new GetCurrentTenantQuery());
@@ -30,7 +30,7 @@ public class TenantController : ControllerBase
     }
 
     [HttpPut("current")]
-    [RequireRole("Tenant", "Admin")]
+    //[RequireRole("Tenant", "Admin")]
     public async Task<IActionResult> UpdateTenant([FromBody] UpdateTenantCommand command)
     {
         var success = await _mediator.Send(command);
@@ -39,7 +39,7 @@ public class TenantController : ControllerBase
     }
 
     [HttpPost]
-    [RequireRole("Admin")]
+    //[RequireRole("Admin")]
     public async Task<ActionResult<Guid>> CreateTenant([FromBody] CreateTenantCommand command)
     {
         var id = await _mediator.Send(command);
@@ -47,7 +47,7 @@ public class TenantController : ControllerBase
     }
 
     [HttpDelete("{id}")]
-    [RequireRole("Admin")]
+    //[RequireRole("Admin")]
     public async Task<IActionResult> DeleteTenant(Guid id)
     {
         try

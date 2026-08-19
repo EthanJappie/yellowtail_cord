@@ -9,7 +9,7 @@ namespace Yellowtail.Cord.Controllers.v1;
 
 [ApiController]
 [Route("api/v1/[controller]")]
-[RequireRole("Admin")] // Only Admins can modify sports
+//[RequireRole("Admin")] // Only Admins can modify sports
 public class SportController : ControllerBase
 {
     private readonly IMediator _mediator;

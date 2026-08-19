@@ -20,7 +20,15 @@ public class RequireRoleAttribute : Attribute, IAuthorizationFilter
 
         if (string.IsNullOrEmpty(roleHeader) || !_roles.Contains(roleHeader, StringComparer.OrdinalIgnoreCase))
         {
-            context.Result = new ForbidResult();
+            context.Result = new ObjectResult(new ProblemDetails 
+            { 
+                Status = Microsoft.AspNetCore.Http.StatusCodes.Status403Forbidden,
+                Title = "Forbidden",
+                Detail = "You do not possess the required role to access this resource."
+            }) 
+            { 
+                StatusCode = Microsoft.AspNetCore.Http.StatusCodes.Status403Forbidden 
+            };
             return;
         }
 
