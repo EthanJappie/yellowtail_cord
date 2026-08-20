@@ -20,14 +20,14 @@ public class AdminController : ControllerBase
     }
 
     [HttpGet("tenants")]
-    public async Task<ActionResult<PaginatedList<TenantDto>>> GetTenants([FromQuery] int page = 1, [FromQuery] int pageSize = 20)
+    public async Task<ActionResult<PaginatedList<TenantDto>>> GetTenants([FromQuery] int page = 1, [FromQuery] int pageSize = 20, CancellationToken cancellationToken = default)
     {
-        return await _mediator.Send(new GetTenantsQuery(page, pageSize));
+        return await _mediator.Send(new GetTenantsQuery(page, pageSize), cancellationToken);
     }
 
     [HttpGet("members")]
-    public async Task<ActionResult<PaginatedList<MemberDto>>> GetMembers([FromQuery] int page = 1, [FromQuery] int pageSize = 20)
+    public async Task<ActionResult<PaginatedList<MemberDto>>> GetMembers([FromQuery] int page = 1, [FromQuery] int pageSize = 20, CancellationToken cancellationToken = default)
     {
-        return await _mediator.Send(new GetGlobalMembersQuery(page, pageSize));
+        return await _mediator.Send(new GetGlobalMembersQuery(page, pageSize), cancellationToken);
     }
 }

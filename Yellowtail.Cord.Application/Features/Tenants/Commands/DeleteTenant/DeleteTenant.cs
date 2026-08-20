@@ -42,7 +42,7 @@ public class DeleteTenantCommandHandler : IRequestHandler<DeleteTenantCommand, b
         }
 
         // Reassign members
-        var members = await _memberRepository.GetAllGlobal()
+        var members = await _memberRepository.GetAll()
             .Where(m => m.TenantId == request.Id)
             .ToListAsync(cancellationToken);
 

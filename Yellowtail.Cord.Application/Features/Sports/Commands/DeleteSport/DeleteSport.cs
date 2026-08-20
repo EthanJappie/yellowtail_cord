@@ -24,7 +24,7 @@ public class DeleteSportCommandHandler : IRequestHandler<DeleteSportCommand, boo
             return false;
 
         // Unlink members from the sport
-        var membersWithSport = await _memberRepository.GetAllGlobal()
+        var membersWithSport = await _memberRepository.GetAll()
             .Include(m => m.MemberSports)
             .Where(m => m.MemberSports.Any(ms => ms.SportId == request.Id))
             .ToListAsync(cancellationToken);

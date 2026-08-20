@@ -22,43 +22,36 @@ public class TenantController : ControllerBase
 
     [HttpGet("current")]
     //[RequireRole("Tenant", "Admin")]
-    public async Task<ActionResult<TenantDto>> GetCurrentTenant()
+    public async Task<ActionResult<TenantDto>> GetCurrentTenant(CancellationToken cancellationToken = default)
     {
-        var tenant = await _mediator.Send(new GetCurrentTenantQuery());
+        var tenant = await _mediator.Send(new GetCurrentTenantQuery(), cancellationToken);
         if (tenant == null) return NotFound();
         return Ok(tenant);
     }
 
     [HttpPut("current")]
     //[RequireRole("Tenant", "Admin")]
-    public async Task<IActionResult> UpdateTenant([FromBody] UpdateTenantCommand command)
+    public async Task<IActionResult> UpdateTenant([FromBody] UpdateTenantCommand command, CancellationToken cancellationToken = default)
     {
-        var success = await _mediator.Send(command);
+        var success = await _mediator.Send(command, cancellationToken);
         if (!success) return NotFound();
         return NoContent();
     }
 
     [HttpPost]
     //[RequireRole("Admin")]
-    public async Task<ActionResult<Guid>> CreateTenant([FromBody] CreateTenantCommand command)
+    public async Task<ActionResult<Guid>> CreateTenant([FromBody] CreateTenantCommand command, CancellationToken cancellationToken = default)
     {
-        var id = await _mediator.Send(command);
-        return Ok(id);
+        var id = await _mediator.Send(command, cancellationToken);
+        return StatusCode(201, id);
     }
 
     [HttpDelete("{id}")]
     //[RequireRole("Admin")]
-    public async Task<IActionResult> DeleteTenant(Guid id)
+    public async Task<IActionResult> DeleteTenant(Guid id, CancellationToken cancellationToken = default)
     {
-        try
-        {
-            var success = await _mediator.Send(new DeleteTenantCommand(id));
-            if (!success) return NotFound();
-            return NoContent();
-        }
-        catch (InvalidOperationException ex)
-        {
-            return BadRequest(new ProblemDetails { Detail = ex.Message });
-        }
+        var success = await _mediator.Send(new DeleteTenantCommand(id), cancellationToken);
+        if (!success) return NotFound();
+        return NoContent();
     }
 }

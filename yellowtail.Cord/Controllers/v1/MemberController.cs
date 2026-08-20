@@ -24,53 +24,53 @@ public class MemberController : ControllerBase
 
     [HttpGet]
     //[RequireRole("Admin", "Tenant")]
-    public async Task<ActionResult<PaginatedList<MemberDto>>> GetTenantMembers([FromQuery] int page = 1, [FromQuery] int pageSize = 20)
+    public async Task<ActionResult<PaginatedList<MemberDto>>> GetTenantMembers([FromQuery] int page = 1, [FromQuery] int pageSize = 20, CancellationToken cancellationToken = default)
     {
-        return await _mediator.Send(new GetTenantMembersQuery(page, pageSize));
+        return await _mediator.Send(new GetTenantMembersQuery(page, pageSize), cancellationToken);
     }
 
     [HttpGet("{id}")]
     //[RequireRole("Admin", "Tenant", "Member")]
-    public async Task<ActionResult<MemberDto>> GetMember(Guid id)
+    public async Task<ActionResult<MemberDto>> GetMember(Guid id, CancellationToken cancellationToken = default)
     {
-        var member = await _mediator.Send(new GetMemberDetailsQuery(id));
+        var member = await _mediator.Send(new GetMemberDetailsQuery(id), cancellationToken);
         if (member == null) return NotFound();
         return Ok(member);
     }
 
     [HttpPut("{id}")]
     //[RequireRole("Admin", "Tenant", "Member")]
-    public async Task<IActionResult> UpdateMember(Guid id, [FromBody] UpdateMemberCommand command)
+    public async Task<IActionResult> UpdateMember(Guid id, [FromBody] UpdateMemberCommand command, CancellationToken cancellationToken = default)
     {
         if (id != command.Id) return BadRequest();
-        var success = await _mediator.Send(command);
+        var success = await _mediator.Send(command, cancellationToken);
         if (!success) return NotFound();
         return NoContent();
     }
 
     [HttpPut("{id}/tenant/{tenantId}")]
     //[RequireRole("Admin", "Tenant")]
-    public async Task<IActionResult> AssignToTenant(Guid id, Guid tenantId)
+    public async Task<IActionResult> AssignToTenant(Guid id, Guid tenantId, CancellationToken cancellationToken = default)
     {
-        var success = await _mediator.Send(new AssignMemberToTenantCommand(id, tenantId));
+        var success = await _mediator.Send(new AssignMemberToTenantCommand(id, tenantId), cancellationToken);
         if (!success) return NotFound();
         return NoContent();
     }
 
     [HttpPost("{id}/sports/{sportId}")]
     //[RequireRole("Admin", "Tenant")]
-    public async Task<IActionResult> AssignSport(Guid id, Guid sportId)
+    public async Task<IActionResult> AssignSport(Guid id, Guid sportId, CancellationToken cancellationToken = default)
     {
-        var success = await _mediator.Send(new AssignSportToMemberCommand(id, sportId));
+        var success = await _mediator.Send(new AssignSportToMemberCommand(id, sportId), cancellationToken);
         if (!success) return NotFound();
         return NoContent();
     }
 
     [HttpDelete("{id}")]
     //[RequireRole("Admin", "Tenant")]
-    public async Task<IActionResult> DeleteMember(Guid id)
+    public async Task<IActionResult> DeleteMember(Guid id, CancellationToken cancellationToken = default)
     {
-        var success = await _mediator.Send(new DeleteMemberCommand(id));
+        var success = await _mediator.Send(new DeleteMemberCommand(id), cancellationToken);
         if (!success) return NotFound();
         return NoContent();
     }

@@ -1,4 +1,5 @@
 using MediatR;
+using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 using Yellowtail.Cord.Application.Common.Interfaces.Repositories;
 using Yellowtail.Cord.Domain.Entities;
@@ -6,6 +7,15 @@ using Yellowtail.Cord.Domain.Entities;
 namespace Yellowtail.Cord.Application.Features.Members.Commands.AssignSportToMember;
 
 public record AssignSportToMemberCommand(Guid MemberId, Guid SportId) : IRequest<bool>;
+
+public class AssignSportToMemberCommandValidator : AbstractValidator<AssignSportToMemberCommand>
+{
+    public AssignSportToMemberCommandValidator()
+    {
+        RuleFor(x => x.MemberId).NotEmpty();
+        RuleFor(x => x.SportId).NotEmpty();
+    }
+}
 
 public class AssignSportToMemberCommandHandler : IRequestHandler<AssignSportToMemberCommand, bool>
 {

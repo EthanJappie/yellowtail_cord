@@ -28,7 +28,7 @@ public class GetGlobalMembersQueryHandler : IRequestHandler<GetGlobalMembersQuer
 
     public async Task<PaginatedList<MemberDto>> Handle(GetGlobalMembersQuery request, CancellationToken cancellationToken)
     {
-        var query = _repository.GetAllGlobal()
+        var query = _repository.GetAll()
             .AsNoTracking()
             .Select(m => new MemberDto(m.Id, m.TenantId, m.FirstName, m.LastName, m.PhotoUrl, m.ModifiedDate));
 

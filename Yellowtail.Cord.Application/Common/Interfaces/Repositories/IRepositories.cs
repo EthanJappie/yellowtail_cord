@@ -16,7 +16,6 @@ public interface IMemberRepository
 {
     Task<Member?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default);
     IQueryable<Member> GetAll();
-    IQueryable<Member> GetAllGlobal(); // Bypasses tenant filter
     void Add(Member member);
     void Remove(Member member);
     Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);

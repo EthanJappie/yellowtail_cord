@@ -20,14 +20,7 @@ public class MemberRepository : IMemberRepository
 
     public IQueryable<Member> GetAll()
     {
-        // This will automatically apply the Tenant query filter configured in DbContext
         return _context.Members.AsQueryable();
-    }
-
-    public IQueryable<Member> GetAllGlobal()
-    {
-        // Ignores the global tenant query filter
-        return _context.Members.IgnoreQueryFilters().AsQueryable();
     }
 
     public void Add(Member member)

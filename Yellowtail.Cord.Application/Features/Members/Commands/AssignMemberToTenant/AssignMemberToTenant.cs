@@ -1,10 +1,20 @@
 using MediatR;
+using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 using Yellowtail.Cord.Application.Common.Interfaces.Repositories;
 
 namespace Yellowtail.Cord.Application.Features.Members.Commands.AssignMemberToTenant;
 
 public record AssignMemberToTenantCommand(Guid MemberId, Guid TenantId) : IRequest<bool>;
+
+public class AssignMemberToTenantCommandValidator : AbstractValidator<AssignMemberToTenantCommand>
+{
+    public AssignMemberToTenantCommandValidator()
+    {
+        RuleFor(x => x.MemberId).NotEmpty();
+        RuleFor(x => x.TenantId).NotEmpty();
+    }
+}
 
 public class AssignMemberToTenantCommandHandler : IRequestHandler<AssignMemberToTenantCommand, bool>
 {
@@ -20,7 +30,7 @@ public class AssignMemberToTenantCommandHandler : IRequestHandler<AssignMemberTo
     public async Task<bool> Handle(AssignMemberToTenantCommand request, CancellationToken cancellationToken)
     {
         // Must use global repository in case moving between tenants
-        var member = await _memberRepository.GetAllGlobal().FirstOrDefaultAsync(m => m.Id == request.MemberId, cancellationToken);
+        var member = await _memberRepository.GetAll().FirstOrDefaultAsync(m => m.Id == request.MemberId, cancellationToken);
         if (member == null)
             return false;
 

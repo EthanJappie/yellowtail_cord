@@ -6,14 +6,9 @@ namespace Yellowtail.Cord.Infrastructure.Persistence;
 
 public class CordDbContext : DbContext
 {
-    private readonly ITenantProvider? _tenantProvider;
-
-    public CordDbContext(
-        DbContextOptions<CordDbContext> options,
-        ITenantProvider? tenantProvider = null)
+    public CordDbContext(DbContextOptions<CordDbContext> options)
         : base(options)
     {
-        _tenantProvider = tenantProvider;
     }
 
     public DbSet<Tenant> Tenants => Set<Tenant>();
