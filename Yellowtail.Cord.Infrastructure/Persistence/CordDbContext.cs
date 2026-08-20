@@ -25,15 +25,5 @@ public class CordDbContext : DbContext
     {
         base.OnModelCreating(modelBuilder);
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(CordDbContext).Assembly);
-
-        modelBuilder.Entity<Member>().HasQueryFilter(m =>
-            _tenantProvider == null ||
-            _tenantProvider.CurrentTenantId == null ||
-            m.TenantId == _tenantProvider.CurrentTenantId);
-
-        modelBuilder.Entity<MemberSport>().HasQueryFilter(ms =>
-            _tenantProvider == null ||
-            _tenantProvider.CurrentTenantId == null ||
-            (ms.Member != null && ms.Member.TenantId == _tenantProvider.CurrentTenantId));
     }
 }

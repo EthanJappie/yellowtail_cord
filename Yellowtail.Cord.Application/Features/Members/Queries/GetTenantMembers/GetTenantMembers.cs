@@ -1,6 +1,7 @@
 using FluentValidation;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using Yellowtail.Cord.Application.Common.Interfaces;
 using Yellowtail.Cord.Application.Common.Interfaces.Repositories;
 using Yellowtail.Cord.Application.Common.Models;
 
@@ -20,17 +21,21 @@ public class GetTenantMembersQueryValidator : AbstractValidator<GetTenantMembers
 public class GetTenantMembersQueryHandler : IRequestHandler<GetTenantMembersQuery, PaginatedList<MemberDto>>
 {
     private readonly IMemberRepository _repository;
+    private readonly ITenantProvider _tenantProvider;
 
-    public GetTenantMembersQueryHandler(IMemberRepository repository)
+    public GetTenantMembersQueryHandler(IMemberRepository repository, ITenantProvider tenantProvider)
     {
         _repository = repository;
+        _tenantProvider = tenantProvider;
     }
 
     public async Task<PaginatedList<MemberDto>> Handle(GetTenantMembersQuery request, CancellationToken cancellationToken)
     {
-        // GetAll() is tenant scoped
+        var tenantId = _tenantProvider.CurrentTenantId;
+        
         var query = _repository.GetAll()
             .AsNoTracking()
+            .Where(m => m.TenantId == tenantId)
             .Select(m => new MemberDto(m.Id, m.TenantId, m.FirstName, m.LastName, m.PhotoUrl, m.ModifiedDate));
 
         return await PaginatedList<MemberDto>.CreateAsync(query, request.Page, request.PageSize, cancellationToken);
