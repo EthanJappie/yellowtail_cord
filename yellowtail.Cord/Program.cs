@@ -17,7 +17,10 @@ builder.Services.AddInfrastructureServices(builder.Configuration);
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(c =>
+{
+    c.OperationFilter<Yellowtail.Cord.Filters.SwaggerHeaderFilter>();
+});
 
 builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
 builder.Services.AddProblemDetails();
@@ -39,6 +42,7 @@ var app = builder.Build();
 await app.Services.InitializeDatabaseAsync();
 
 app.UseMiddleware<SecurityHeadersMiddleware>();
+app.UseMiddleware<HeaderContextMiddleware>();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

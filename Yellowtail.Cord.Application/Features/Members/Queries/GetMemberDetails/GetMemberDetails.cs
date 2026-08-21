@@ -21,7 +21,9 @@ public class GetMemberDetailsQueryHandler : IRequestHandler<GetMemberDetailsQuer
         var member = await _repository.GetAll()
             .AsNoTracking()
             .Where(m => m.Id == request.Id)
-            .Select(m => new MemberDto(m.Id, m.TenantId, m.FirstName, m.LastName, m.PhotoUrl, m.ModifiedDate))
+            .Select(m => new MemberDto(
+                m.Id, m.TenantId, m.FirstName, m.LastName, m.PhotoUrl, m.ModifiedDate,
+                m.MemberSports.Select(ms => new SportDto(ms.Sport!.Id, ms.Sport.Name, ms.Sport.Description, ms.Sport.ModifiedDate)).ToList()))
             .FirstOrDefaultAsync(cancellationToken);
 
         return member;

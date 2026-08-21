@@ -30,7 +30,9 @@ public class GetGlobalMembersQueryHandler : IRequestHandler<GetGlobalMembersQuer
     {
         var query = _repository.GetAll()
             .AsNoTracking()
-            .Select(m => new MemberDto(m.Id, m.TenantId, m.FirstName, m.LastName, m.PhotoUrl, m.ModifiedDate));
+            .Select(m => new MemberDto(
+                m.Id, m.TenantId, m.FirstName, m.LastName, m.PhotoUrl, m.ModifiedDate,
+                m.MemberSports.Select(ms => new SportDto(ms.Sport!.Id, ms.Sport.Name, ms.Sport.Description, ms.Sport.ModifiedDate)).ToList()));
 
         return await PaginatedList<MemberDto>.CreateAsync(query, request.Page, request.PageSize, cancellationToken);
     }

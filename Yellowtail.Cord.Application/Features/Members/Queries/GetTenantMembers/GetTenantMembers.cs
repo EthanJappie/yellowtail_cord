@@ -33,10 +33,20 @@ public class GetTenantMembersQueryHandler : IRequestHandler<GetTenantMembersQuer
     {
         var tenantId = _tenantProvider.CurrentTenantId;
         
+        if (tenantId == null)
+        {
+            throw new ValidationException(new List<FluentValidation.Results.ValidationFailure>
+            {
+                new("X-Tenant-Id", "Tenant context is required to query tenant members. Please supply the X-Tenant-Id header.")
+            });
+        }
+        
         var query = _repository.GetAll()
             .AsNoTracking()
             .Where(m => m.TenantId == tenantId)
-            .Select(m => new MemberDto(m.Id, m.TenantId, m.FirstName, m.LastName, m.PhotoUrl, m.ModifiedDate));
+            .Select(m => new MemberDto(
+                m.Id, m.TenantId, m.FirstName, m.LastName, m.PhotoUrl, m.ModifiedDate,
+                m.MemberSports.Select(ms => new SportDto(ms.Sport!.Id, ms.Sport.Name, ms.Sport.Description, ms.Sport.ModifiedDate)).ToList()));
 
         return await PaginatedList<MemberDto>.CreateAsync(query, request.Page, request.PageSize, cancellationToken);
     }

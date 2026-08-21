@@ -31,20 +31,5 @@ public class RequireRoleAttribute : Attribute, IAuthorizationFilter
             };
             return;
         }
-
-        // Setup tenant and user providers if they exist in the headers
-        var tenantHeader = context.HttpContext.Request.Headers["X-Tenant-Id"].FirstOrDefault();
-        if (Guid.TryParse(tenantHeader, out var tenantId))
-        {
-            var tenantProvider = context.HttpContext.RequestServices.GetService(typeof(ITenantProvider)) as ITenantProvider;
-            tenantProvider?.SetCurrentTenant(tenantId);
-        }
-        
-        var userHeader = context.HttpContext.Request.Headers["X-User-Id"].FirstOrDefault();
-        if (Guid.TryParse(userHeader, out var userId))
-        {
-            var userProvider = context.HttpContext.RequestServices.GetService(typeof(ICurrentUserProvider)) as ICurrentUserProvider;
-            userProvider?.SetCurrentUserId(userId);
-        }
     }
 }
